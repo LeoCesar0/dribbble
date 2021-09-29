@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Login from './pages/Login';
+
+import "./styles/GlobalStyles.css"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="global-container">
+    <Login />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
