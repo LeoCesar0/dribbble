@@ -14,4 +14,5 @@ export const StyledButton = styled.button<IProps>`
     font-size: 14px;
     line-height: 17px;
     font-weight: bold;
+    cursor: pointer;
 ` 

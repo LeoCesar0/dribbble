@@ -1,11 +1,12 @@
 import SignInForm from "../../components/SignInForm";
-import { Container, FormContainer, MainContainer, SideContainer } from "./styles";
+import { Container, FormContainer, MainContainer } from "./styles";
+
+import AuthSidebar from "../../components/AuthSidebar";
 
 function Login() {
   return (
     <Container>
-      <SideContainer>
-      </SideContainer>
+      <AuthSidebar />
       <MainContainer>
         <FormContainer>
           <SignInForm />
