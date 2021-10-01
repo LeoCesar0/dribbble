@@ -20,10 +20,26 @@ const GlobalContext = createContext<IGlobalState>({} as IGlobalState);
 
 
 export const GlobalStateProvider: React.FC = ({children}) => {
-    const [auth, setAuth] = useState<IAuth>()
+    const [auth, setAuthState] = useState<IAuth | undefined>(()=>{
+        const savedAuth = localStorage.getItem("@dribbble:auth") || undefined
+
+        if(savedAuth){
+            return JSON.parse(savedAuth)
+        }
+
+        return savedAuth
+    })
+
+    const setAuth = (data: IAuth) =>{
+        localStorage.setItem("@dribbble:auth", JSON.stringify(data))
+
+        setAuthState(data)
+    }
 
     function removeAuth(){
-        setAuth(undefined)
+        localStorage.removeItem("@dribbble:auth")
+
+        setAuthState(undefined)
     }
 
     return (

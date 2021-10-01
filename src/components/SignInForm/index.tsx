@@ -16,7 +16,6 @@ const SignInForm: React.FC = () => {
 
   const context = useGlobalContext()
 
-  console.log({context})
 
   const Login = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -30,11 +29,13 @@ const SignInForm: React.FC = () => {
     try {
       const { data } = await api.post("/login", {
         email,
-        password,
+        password
       });
 
-      console.log({ data });
       toast.success("Deu certo logar");
+      context.setAuth(data)
+
+
       history.push("/")
     } catch (error) {
       toast.error("Não logou");
