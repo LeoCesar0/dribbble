@@ -1,17 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LoginForm, Label } from "./styles";
+import { useHistory } from "react-router";
+import { useGlobalContext } from "../../context/GlobalContext";
 import api from "../../services/api";
 
+import { toast } from "react-toastify";
 import Input from "../Input";
 import Button from "../Button";
-import { toast } from "react-toastify";
+import ValidateLogin from "../../utils/ValidateLogin";
 
 const SignInForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory()
+
+  const context = useGlobalContext()
+
+  console.log({context})
 
   const Login = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+
+    const validation = ValidateLogin(email, password)
+
+    if(typeof validation === "string"){
+      return toast.error(validation)
+    }
 
     try {
       const { data } = await api.post("/login", {
@@ -21,14 +35,13 @@ const SignInForm: React.FC = () => {
 
       console.log({ data });
       toast.success("Deu certo logar");
-    } catch (error) {}
-    toast.error("Não logou");
+      history.push("/")
+    } catch (error) {
+      toast.error("Não logou");
+    }
+    
   };
 
-  useEffect(()=>{
-
-    
-  },[])
 
   return (
     <LoginForm>
