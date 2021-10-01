@@ -6,6 +6,7 @@ export const Container = styled.div`
   padding: 60px 44px 0 44px;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Logo = styled.img`
@@ -20,6 +21,13 @@ export const Title = styled.h1`
 `;
 
 export const Image = styled.img`
-  margin-top: auto;
-  margin-bottom: 117px;
+  // margin-top: auto;
+  // margin-bottom: 117px;
+
+  position: absolute;
+
+  height: auto;
+  left: 56%;
+  transform: translate(-50%);
+  bottom: 117px;
 `;

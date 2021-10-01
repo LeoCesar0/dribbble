@@ -1,18 +1,11 @@
 import SignInForm from "../../components/SignInForm";
-import { Container, FormContainer, MainContainer } from "./styles";
-
-import AuthSidebar from "../../components/AuthSidebar";
+import AuthLayout from "../../components/AuthLayout";
 
 function Login() {
   return (
-    <Container>
-      <AuthSidebar />
-      <MainContainer>
-        <FormContainer>
-          <SignInForm />
-        </FormContainer>
-      </MainContainer>
-    </Container>
+    <AuthLayout>
+      <SignInForm></SignInForm>
+    </AuthLayout>
   );
 }
 

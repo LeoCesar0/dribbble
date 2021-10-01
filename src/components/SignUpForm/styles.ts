@@ -7,7 +7,7 @@ export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  .form-title {
+  .form-title{
     font-size: 24px;
     line-height: 29px;
     letter-spacing: -0.01em;
@@ -16,10 +16,22 @@ export const LoginForm = styled.form`
   }
 `;
 
+
 export const Label = styled.label`
   font-weight: bold;
   font-size: 14px;
   line-height: 17px;
   margin-bottom: 8px;
+
+  display: block;
 `;
 
+export const NameContainer = styled.div`
+  
+  display: grid;
+  grid-template-columns: 1fr 185px;
+
+  >div:first-child {
+    margin-right: 62px;
+  }
+`
