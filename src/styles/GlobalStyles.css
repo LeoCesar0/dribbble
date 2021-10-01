@@ -33,3 +33,17 @@ body{
 
 
 
+.loading-circle{
+    text-align: center;
+    font-size: 16px;
+    animation: rotation 1500ms linear infinite;
+}
+
+@keyframes rotation{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

@@ -22,7 +22,6 @@ const SignUpForm: React.FC = () => {
   const [password, setPassword] = useState("");
 
 
-  console.log(name, username, email, password)
 
   const CreateAccount = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
@@ -31,7 +30,6 @@ const SignUpForm: React.FC = () => {
 
     if (typeof validation === "string"){
 
-      console.log(validation)
       toast.error(validation)
       return
     }
@@ -44,10 +42,9 @@ const SignUpForm: React.FC = () => {
         password,
       });
 
-      toast.success("Deu certo")
+      toast.success("Account created succesfully")
     } catch (error) {
-
-      toast.error("Deu erro")
+      toast.error("Failed to create account")
     }
   };
 

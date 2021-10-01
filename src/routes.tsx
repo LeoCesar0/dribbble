@@ -3,6 +3,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
   
 import CreateAccount from "./pages/CreateAccount";
 import Home from "./pages/Home";
@@ -18,9 +19,9 @@ import Login from "./pages/Login";
             <Route path="/signin">
               <Login />
             </Route>
-            <Route exact path="/">
+            <ProtectedRoute exact path="/">
               <Home />
-            </Route>
+            </ProtectedRoute>
           </Switch>
       </Router>
     );

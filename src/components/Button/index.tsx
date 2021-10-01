@@ -1,16 +1,25 @@
 import { StyledButton } from "./styles";
+import {VscLoading} from "react-icons/vsc";
 
 export interface IProps {
   width?: string;
   height?: string;
   border_radius?: string;
-  submitForm?: (e: any) => void
+  submitForm?: (e: any) => void;
+  isLoading?: boolean;
 }
 
-const Button: React.FC<IProps> = ({ children, width, height, submitForm}) => {
+const Button: React.FC<IProps> = ({
+  children,
+  width,
+  height,
+  submitForm,
+  isLoading,
+}) => {
+  console.log({isLoading})
   return (
-    <StyledButton width={width} height={height} onClick={submitForm} >
-      {children}
+    <StyledButton width={width} height={height} onClick={submitForm}>
+      {isLoading ? <VscLoading className="loading-circle" /> : children}
     </StyledButton>
   );
 };
