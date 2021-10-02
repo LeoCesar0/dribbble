@@ -16,7 +16,6 @@ const Button: React.FC<IProps> = ({
   submitForm,
   isLoading,
 }) => {
-  console.log({isLoading})
   return (
     <StyledButton width={width} height={height} onClick={submitForm}>
       {isLoading ? <VscLoading className="loading-circle" /> : children}

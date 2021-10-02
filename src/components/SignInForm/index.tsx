@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { LoginForm, Label } from "./styles";
 import { useHistory } from "react-router";
 import { useGlobalContext } from "../../context/GlobalContext";
-import api from "../../services/api";
+import {api} from "../../services/api";
 
 import { toast } from "react-toastify";
 import Input from "../Input";
@@ -15,6 +15,7 @@ const SignInForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
 
   const [invalidLoginError, setInvalidLoginError] = useState(false);
 
@@ -45,14 +46,16 @@ const SignInForm: React.FC = () => {
         password,
       });
 
+      // console.log(data.access_token)
+      
       context.setAuth(data);
-      setLoading(false)
 
       history.push("/");
     } catch (error) {
       setInvalidLoginError(true)
-      setLoading(false)
     }
+
+    setLoading(false)
   };
 
   return (

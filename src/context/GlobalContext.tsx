@@ -6,7 +6,7 @@ interface IGlobalState {
     removeAuth: () => void
 }
 
-interface IAuth {
+export interface IAuth {
   access_token: string;
   user: {
     id: string;

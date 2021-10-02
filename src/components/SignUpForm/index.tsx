@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LoginForm, Label, NameContainer } from "./styles";
-import api from "../../services/api";
+import { api } from "../../services/api";
 
 import { toast } from "react-toastify";
 import Input from "../Input";
@@ -20,19 +20,18 @@ const SignUpForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const CreateAccount = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
 
+    const validation = ValidateCreateAccount(name, username, email, password);
 
-  const CreateAccount = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-
-    const validation = ValidateCreateAccount(name, username, email, password)
-
-    if (typeof validation === "string"){
-
-      toast.error(validation)
-      return
+    if (typeof validation === "string") {
+      toast.error(validation);
+      return;
     }
+    setLoading(true);
 
     try {
       await api.post("/users", {
@@ -42,13 +41,13 @@ const SignUpForm: React.FC = () => {
         password,
       });
 
-      toast.success("Account created succesfully")
+      toast.success("Account created succesfully");
     } catch (error) {
-      toast.error("Failed to create account")
+      toast.error("Failed to create account");
     }
+
+    setLoading(false);
   };
-
-
 
   return (
     <LoginForm>
@@ -94,7 +93,9 @@ const SignUpForm: React.FC = () => {
         }}
       />
 
-      <Button submitForm={CreateAccount}>Sign In</Button>
+      <Button submitForm={CreateAccount} isLoading={loading}>
+        Sign In
+      </Button>
     </LoginForm>
   );
 };
