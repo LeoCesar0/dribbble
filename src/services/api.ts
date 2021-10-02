@@ -1,5 +1,4 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 import { IAuth } from "../context/GlobalContext";
 
 export const api = axios.create({
